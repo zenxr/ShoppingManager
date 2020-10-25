@@ -5,6 +5,10 @@ services:
     build: ./react-frontend
     command: npm start
     ports: [3000:3000]
+    # for live reloads
+    volumes:
+      - ./react-frontend/src:/app/src
+      - ./react-frontend/public:/app/public
     links:
       - express-backend
     depends_on: ['express-backend']
@@ -13,6 +17,8 @@ services:
     build: ./express-backend
     command: node index.js
     ports: [3001:3000]
+    volumes:
+      - ./express-backend/index.js:/app/index.js # need to update if creating additional dirs
     links:
       - postgres
     depends_on: ['postgres', 'adminer']
