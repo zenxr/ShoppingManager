@@ -10,9 +10,21 @@ Users should be able to save items they buy frequently with (optional) informati
 
 ## Using
 
-TBD
+You'll need `node`, `npm` and `docker` installed. Installation varies depending on OS.
+
+`docker-compose build` - build the containers (only necessary for first run or if code is modified)
+`docker-compose up -d` - run the containers in detached mode.
+
+The `docker-compose.yml` file is responsible for configuring how each container is spun up and setting up the environment to allow communication between containers.
+
+| Server | Port and information |
+|:---|:----|
+| Express | Port 3000 - provides business layer; functions as any other RESTful JSON API. |
+| Postgres | Port 8080 - database |
 
 ## Contributing
+
+TBD
 
 ### Requirements
 

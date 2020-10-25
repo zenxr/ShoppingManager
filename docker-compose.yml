@@ -1,0 +1,23 @@
+version: '3'
+services:
+  express-backend:
+    container_name: express-backend
+    build: ./express-backend
+    command: node index.js
+    ports: [3000:3000]
+    links:
+      - postgres
+    depends_on: ['postgres', 'adminer']
+    network_mode: host
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: SomeExceedinglyLongPassword
+  adminer:
+    image: adminer
+    restart: always
+    depends_on: ['postgres']
+    ports:
+      - 8080:8080
