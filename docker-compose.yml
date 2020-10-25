@@ -1,10 +1,18 @@
 version: '3'
 services:
+  react-frontend:
+    container_name: react-frontned
+    build: ./react-frontend
+    command: npm start
+    ports: [3000:3000]
+    links:
+      - express-backend
+    depends_on: ['express-backend']
   express-backend:
     container_name: express-backend
     build: ./express-backend
     command: node index.js
-    ports: [3000:3000]
+    ports: [3001:3000]
     links:
       - postgres
     depends_on: ['postgres', 'adminer']
